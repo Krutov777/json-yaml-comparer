@@ -19,8 +19,10 @@ jobs:
         # make depends on poetry
       - name: Install dependencies
         run: |
-          pip install poetry
-          python3 -m pip install --user dist/*.whl
+          python -m pip install --upgrade pip
+          python -m pip install poetry
+          poetry add flake8
+          poetry install
       - name: Run tests
         run: |
           make run_test
