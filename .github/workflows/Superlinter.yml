@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install poetry
-          make install
+          python3 -m pip install --user dist/*.whl
       - name: Run linter
         run: |
           make lint
