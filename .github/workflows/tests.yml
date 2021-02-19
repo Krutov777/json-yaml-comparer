@@ -23,7 +23,7 @@ jobs:
           make install
       - name: Run tests
         run: |
-          make test2
+          make run_test
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v2.7.5
         env:
