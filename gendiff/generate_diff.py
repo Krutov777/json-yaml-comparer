@@ -1,10 +1,21 @@
 #!/usr/bin/env python3
 import json
+import os
+import yaml
 
 
 def read_file(file_path):
-    file = json.load(open(file_path))
+    ext = os.path.splitext(file_path)[-1]
+    if ext == '.json':
+        file = json.load(open(file_path))
+    elif ext == '.yml' or ext == '.yaml':
+        stream = open(file_path, 'r')
+        file = yaml.safe_load(stream)
+        stream.close()
+    else:
+        return "Sorry, our program not supported this format. Try 'Json' or 'Yaml'"  # noqa: E501
     return file
+
 
 def get_diff(file_path1, file_path2):
     json1 = read_file(file_path1)
@@ -16,7 +27,7 @@ def get_diff(file_path1, file_path2):
             string = '    {}: {}'.format(key, json1.get(key))
             list_str.append(string)
             json2.pop(key)
-        elif json2.get(key, None) == None:
+        elif json2.get(key, None) is None:
             string = '  - {}: {}'.format(key, json1.get(key))
             list_str.append(string)
         else:
