@@ -27,3 +27,4 @@ jobs:
       - name: Lint the package
         run : |
             make lint
+            make run_test
