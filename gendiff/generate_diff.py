@@ -13,21 +13,21 @@ def get_diff(file_path1, file_path2):
     list_str = []
     for key in keys_json1:
         if json2.get(key, None) == json1.get(key):
-            string = '   {}: {}'.format(key, json1.get(key))
+            string = '    {}: {}'.format(key, json1.get(key))
             list_str.append(string)
             json2.pop(key)
         elif json2.get(key, None) == None:
-            string = ' - {}: {}'.format(key, json1.get(key))
+            string = '  - {}: {}'.format(key, json1.get(key))
             list_str.append(string)
         else:
-            string = ' - {}: {}'.format(key, json1.get(key))
+            string = '  - {}: {}'.format(key, json1.get(key))
             list_str.append(string)
-            string = ' + {}: {}'.format(key, json2.get(key))
+            string = '  + {}: {}'.format(key, json2.get(key))
             list_str.append(string)
             json2.pop(key)
     keys_json2 = sorted(list(json2.keys()))
     for key in keys_json2:
-        string = ' + {}: {}'.format(key, json2.get(key))
+        string = '  + {}: {}'.format(key, json2.get(key))
         list_str.append(string)
     result = '{\n' + '\n'.join(list_str) + '\n}'
     return result
