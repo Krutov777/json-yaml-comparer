@@ -25,4 +25,4 @@ jobs:
           poetry install
       - name: Run tests
         run: |
-          make run_test
+          make test
