@@ -17,6 +17,7 @@ gendiff = 'gendiff.scripts.gendiff:main'
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.2"
 PyYAML = "^5.4.1"
+pytest-cov = "^2.11.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
