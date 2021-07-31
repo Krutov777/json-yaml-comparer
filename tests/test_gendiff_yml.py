@@ -13,8 +13,8 @@ answer = u'''{
 def test_flat_yml():
     a = answer
     b = generate_diff.get_diff(
-        './tests/fixtures/test_file1.yml',
-        './tests/fixtures/test_file2.yml'
+        './tests/fixtures/before.yml',
+        './tests/fixtures/after.yml'
     )
 
     assert len(a) == len(b)
