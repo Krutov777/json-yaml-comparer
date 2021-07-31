@@ -12,7 +12,7 @@ answer = u'''{
 
 def test_flat_yml():
     a = answer
-    b = generate_diff.get_diff(
+    b = generate_diff.generate_diff(
         './tests/fixtures/before.yml',
         './tests/fixtures/after.yml'
     )

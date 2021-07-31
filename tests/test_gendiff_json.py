@@ -13,7 +13,7 @@ answer = u'''{
 
 def test_flat_json():
     a = answer
-    b = generate_diff.get_diff(
+    b = generate_diff.generate_diff(
         './tests/fixtures/before.json',
         './tests/fixtures/after.json'
     )
