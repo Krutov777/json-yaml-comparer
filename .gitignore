@@ -1,5 +1,9 @@
-*.egg-info
+.coverage
+.mypy_cache
+.python-version
+.vscode
+/dist
 __pycache__
-dist/
+*.egg-info
 *.pyc
-.venv/
+coverage.xml
