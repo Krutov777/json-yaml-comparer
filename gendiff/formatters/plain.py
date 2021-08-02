@@ -1,24 +1,26 @@
 """Plain formatter from dict diff."""
-from typing import Any, Dict, List, Optional
 
 from gendiff import dict_diff
 
 
-def format_dict(dict_diff):
+def format_dict(diff):
     """Format dict_diff to plain string."""
-    return _build_message(dict_diff)
+    return _build_message(diff)
 
 
-def _build_message(dict_diff, parents: Optional[List[str]] = None):
+def _build_message(diff, parents=None):
     if not parents:
         parents = []
 
     message_lines = []
-    for key, node in sorted(dict_diff.items(), key=lambda item: item[0]):
+    for key, node in sorted(diff.items(), key=lambda item: item[0]):
         node_type = node[dict_diff.TYPE]
 
         if node_type == dict_diff.PARENT:
-            line = _build_message(node[dict_diff.CHILDREN], parents=parents + [key])
+            line = _build_message(
+                node[dict_diff.CHILDREN],
+                parents=parents + [key],
+                )
         elif node_type == dict_diff.CHANGED:
             message = "Property '{key}' was changed. From '{old}' to '{new}'"
             line = message.format(

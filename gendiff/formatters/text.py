@@ -1,4 +1,4 @@
-"""Text formatter from ast."""
+"""Text formatter from dict."""
 
 from gendiff import dict_diff
 
@@ -9,36 +9,41 @@ _SYMBOLS = {
 }
 
 
-def format_dict(dict_diff):
-    """Format ast_diff to text string."""
+def format_dict(diff):
+    """Format dict_diff to text string."""
     return '{{\n{message}\n}}'.format(
-        message=_build_message(dict_diff),
+        message=_build_message(diff),
     )
 
 
-def _build_message(dict_diff, depth=0):
+def _build_message(diff, depth=0):
     message_lines = []
-    for key, node in sorted(dict_diff.items(), key=lambda item: item[0]):
-        node_type = node[dict.TYPE]
-        if node_type == dict.PARENT:
-            children = _build_message(node[dict.CHILDREN], depth=depth + 1)
+    for key, node in sorted(diff.items(), key=lambda item: item[0]):
+        node_type = node[dict_diff.TYPE]
+        if node_type == dict_diff.PARENT:
+            children = _build_message(node[dict_diff.CHILDREN], depth=depth+1)
             line = '    {indent}{key}: {{\n{children}\n    {indent}}}'.format(
                 children=children,
                 key=key,
                 indent=_get_indent(depth),
             )
-        elif node_type == dict.CHANGED:
+        elif node_type == dict_diff.CHANGED:
             line = '{added}\n{removed}'.format(
-                added=_get_message(dict.ADDED, key, node[dict.VALUE], depth),
-                removed=_get_message(
-                    dict.REMOVED,
+                added=_get_message(
+                    dict_diff.ADDED,
                     key,
-                    node[dict.OLD_VALUE],
+                    node[dict_diff.VALUE],
+                    depth
+                    ),
+                removed=_get_message(
+                    dict_diff.REMOVED,
+                    key,
+                    node[dict_diff.OLD_VALUE],
                     depth,
                 ),
             )
         else:
-            line = _get_message(node_type, key, node[dict.VALUE], depth)
+            line = _get_message(node_type, key, node[dict_diff.VALUE], depth)
         message_lines.append(line)
     return '\n'.join(message_lines)
 

@@ -9,15 +9,16 @@ _FORMATS = {
     'text': text.format_dict,
 }
 
+
 def arguments_parse():
     parser = argparse.ArgumentParser(description='Generate diff')
     parser.add_argument(
-    '-f',
-    '--format',
-    dest='FORMAT',
-    choices=_FORMATS,
-    default='text',
-    help='set format of output',
+        '-f',
+        '--format',
+        dest='FORMAT',
+        choices=_FORMATS,
+        default='text',
+        help='set format of output',
     )
     parser.add_argument('first_file', metavar='FIRST_FILE')
     parser.add_argument('second_file', metavar='SECOND_FILE')
@@ -25,11 +26,13 @@ def arguments_parse():
     return args
 
 
-
-
 def main():
     args = arguments_parse()
-    diff = generate_diff.generate_diff(args.first_file, args.second_filef, format_func=_FORMATS[args.FORMAT])
+    diff = generate_diff.generate_diff(
+        args.first_file,
+        args.second_file,
+        format_func=_FORMATS[args.FORMAT]
+    )
     print(diff)
 
 

@@ -1,5 +1,4 @@
-#Module for create dictionary difference.
-from typing import Any, Dict
+'''Module for create dictionary difference.'''
 
 TYPE = 'type'
 CHILDREN = 'children'
@@ -13,7 +12,7 @@ PARENT = 'parent'
 
 
 def build_dict_diff(first, second):
-    #Generate dict diff between first and second dicts.
+    '''Generate dict diff between first and second dicts.'''
     first_keys = first.keys()
     second_keys = second.keys()
 
@@ -25,12 +24,17 @@ def build_dict_diff(first, second):
         key: {TYPE: ADDED, VALUE: second[key]}
         for key in add_keys
     }
-    removed = {}
+    """removed = {}
     for key in remove_keys:
         removed[key] = {
-            TYPE: REMOVED, 
+            TYPE: REMOVED,
             VALUE: first[key],
         }
+        """
+    removed = {
+        key: {TYPE: REMOVED, VALUE: first[key]}
+        for key in remove_keys
+    }
 
     common = {}
     for key in common_keys:
@@ -41,9 +45,15 @@ def build_dict_diff(first, second):
                 TYPE: UNCHANGED,
                 VALUE: second_item,
             }
-        #Возвращает флаг, указывающий на то, является ли указанный объект экземпляром указанного класса
-        #Returns a flag indicating whether the given object is an instance of the class
         elif isinstance(first_item, dict) and isinstance(second_item, dict):
+            """
+            isinstance:
+            Возвращает флаг, указывающий на то, является ли
+            указанный объект экземпляром указанного класса
+            (eng)
+            Returns a flag indicating whether the given
+            object is an instance of the class
+            """
             common[key] = {
                 TYPE: PARENT,
                 CHILDREN: build_dict_diff(first_item, second_item),
