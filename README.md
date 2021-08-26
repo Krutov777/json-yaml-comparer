@@ -1,9 +1,8 @@
 # Compare files
+[![Build Status](https://app.travis-ci.com/Krutov777/json-yaml-comparer.svg?branch=main)](https://app.travis-ci.com/Krutov777/json-yaml-comparer)
 [![Actions Status](https://github.com/Krutov777/python-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/Krutov777/python-project-lvl2/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/cb8218bd9867d2c8302b/test_coverage)](https://codeclimate.com/github/Krutov777/python-project-lvl2/test_coverage)
-[![Actions Status](https://github.com/Krutov777/python-project-lvl2/workflows/linter/badge.svg)](https://github.com/Krutov777/python-project-lvl2/actions)
-[![Actions Status](https://github.com/Krutov777/python-project-lvl2/workflows/tests/badge.svg)](https://github.com/Krutov777/python-project-lvl2/actions)
 
 **Files comparison** is a CLI-utility that compares two configuration files.
 ## Installation
