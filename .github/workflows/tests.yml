@@ -22,7 +22,7 @@ jobs:
           pip3 install poetry
       - name: Run tests
         run: |
-          make test
+          make run_test
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v2.7.5
         env:
