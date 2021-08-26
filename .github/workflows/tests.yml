@@ -19,12 +19,11 @@ jobs:
         # make depends on poetry
       - name: Install dependencies
         run: |
-          pip install poetry
-          make install
+          pip3 install poetry
       - name: Run tests
         run: |
-          make test
+          make test-with-coverage
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v2.7.5
         env:
-          CC_TEST_REPORTER_ID: f31575308a30371914519f916c24883d4c2320201d4d50a24c8ef7200c9c2206
+          CC_TEST_REPORTER_ID: a79cbf16e072a214e8016c33ce8373a681e7427d75006d8250c50c7911bfd278
